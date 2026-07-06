@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Titorline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f1115;
+      --fg: #f5f6f8;
+      --muted: #9aa0aa;
+      --accent: #6750A4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Jost', system-ui, sans-serif;
+      background: radial-gradient(circle at 50% 30%, #1a1e26 0%, var(--bg) 70%);
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .landing {
+      text-align: center;
+      max-width: 560px;
+    }
+
+    /* Wordmark: "Titor" en fg, "line" en el color de acento */
+    .brand {
+      font-weight: 700;
+      font-size: clamp(48px, 12vw, 96px);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--fg);
+    }
+
+    .brand .accent {
+      color: var(--accent);
+    }
+
+    .tagline {
+      margin-top: 20px;
+      font-weight: 400;
+      font-size: clamp(16px, 3.5vw, 20px);
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="landing">
+    <h1 class="brand">Titor<span class="accent">line</span></h1>
+    <p class="tagline">Your personal record of what repeats.</p>
+  </main>
+</body>
+</html>
