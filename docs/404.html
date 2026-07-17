@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-ju4pidww><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script>
+      (function () {
+        try {
+          var pref = localStorage.getItem('theme');
+          if (pref === 'light' || pref === 'dark') {
+            document.documentElement.setAttribute('data-theme', pref);
+          }
+        } catch (e) {}
+      })();
+    </script><meta name="description" content="Titorline is a calm, private companion for the recurring things in your life (oil changes, birthdays, bills, subscriptions). Log it once, then get the quiet &quot;I didn't realize it had been that long&quot; moments."><meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1e1b4b" media="(prefers-color-scheme: dark)"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;900&display=swap"><link rel="canonical" href="https://titorline.com/404/"><link rel="alternate" hreflang="en" href="https://titorline.com/404/"><link rel="alternate" hreflang="es" href="https://titorline.com/es/404/"><link rel="alternate" hreflang="x-default" href="https://titorline.com/404/"><title>404 — Titorline</title><meta property="og:type" content="website"><meta property="og:title" content="404 — Titorline"><meta property="og:description" content="Titorline is a calm, private companion for the recurring things in your life (oil changes, birthdays, bills, subscriptions). Log it once, then get the quiet &quot;I didn't realize it had been that long&quot; moments."><meta property="og:url" content="https://titorline.com/404/"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://titorline.com/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Titorline"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://titorline.com/og.png"><link rel="stylesheet" href="/_astro/Layout.DCTVnY_a.css"><style>.notfound[data-astro-cid-ibpinaeu]{justify-content:center;align-items:center;gap:var(--sp-4);text-align:center;min-height:70vh;padding:var(--sp-8) var(--sp-4);flex-direction:column;display:flex}.code[data-astro-cid-ibpinaeu]{color:var(--accent);margin:0;font-size:4rem;font-weight:700;line-height:1}.body[data-astro-cid-ibpinaeu]{max-width:32ch;margin:0}.cta[data-astro-cid-ibpinaeu]{padding:var(--sp-3) var(--sp-4);background:var(--accent);color:var(--on-accent);border-radius:var(--radius-tile);font-weight:600;text-decoration:none}
+</style></head><body data-astro-cid-ju4pidww><a href="#main" class="skip-link" data-astro-cid-ju4pidww>Skip to content</a><span id="top" aria-hidden="true" data-astro-cid-ju4pidww></span><main id="main" class="notfound" data-astro-cid-ibpinaeu><p class="code" data-astro-cid-ibpinaeu>404</p><h1 data-astro-cid-ibpinaeu>Page not found</h1><p class="body" data-astro-cid-ibpinaeu>The page you&#39;re looking for doesn&#39;t exist or has moved.</p><a class="cta" href="/" data-astro-cid-ibpinaeu>Go to homepage</a></main><script lang="ts">
+      // Theme switch wiring — shared by every `.theme-toggle` on the page.
+      // Two states only: Light <-> Dark. First visit (no stored choice) follows
+      // the OS via prefers-color-scheme; the first click pins an explicit theme.
+      const KEY = 'theme';
+      const root = document.documentElement;
+
+      // The active theme: an explicit stored choice, else the OS preference
+      // resolved to light/dark (matches the unset `prefers-color-scheme` CSS).
+      const effective = () => {
+        try {
+          const stored = localStorage.getItem(KEY);
+          if (stored === 'light' || stored === 'dark') return stored;
+        } catch {}
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      };
+
+      const sync = (btn: HTMLElement, theme: string) => {
+        btn.dataset.pref = theme;
+        const label = btn.dataset.label || 'Theme';
+        const name = btn.dataset[theme] || theme;
+        btn.setAttribute('aria-label', `${label}: ${name}`);
+        btn.setAttribute('title', `${label}: ${name}`);
+      };
+
+      const apply = (theme: string) => {
+        root.setAttribute('data-theme', theme);
+        try {
+          localStorage.setItem(KEY, theme);
+        } catch {}
+        document
+          .querySelectorAll<HTMLElement>('.theme-toggle')
+          .forEach((btn) => sync(btn, theme));
+      };
+
+      document.querySelectorAll<HTMLElement>('.theme-toggle').forEach((btn) => {
+        sync(btn, effective());
+        btn.addEventListener('click', () => {
+          apply(effective() === 'dark' ? 'light' : 'dark');
+        });
+      });
+    </script></body></html>
